@@ -8,6 +8,6 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: auction
+      POSTGRES_DB: auction_${ENVIRONMENT}
     ports:
       - 5432:5432

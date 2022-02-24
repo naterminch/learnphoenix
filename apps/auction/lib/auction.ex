@@ -1,4 +1,16 @@
 defmodule Auction do
+  @moduledoc """
+  Provides functions for interacting with the database layer of an Auction
+  application.
+  In order to keep database concerns separate from the rest of an
+  application, these
+  functions are provided. Any interaction you need to do with the database
+  can be done
+  from within these functions. See an individual function’s documentation for
+  more
+  information and usage examples (like
+  `Auction.get_user_by_username_and_password/2`).
+  """
   alias Auction.{Repo, Item, User, Password, Bid}
   import Ecto.Query
   @repo Auction.Repo
@@ -52,6 +64,18 @@ defmodule Auction do
     |> @repo.insert
   end
 
+  @doc """
+  Retrieves a User from the database matching the provided username and password
+  # current documentation ...
+
+  ## Examples
+    iex> Auction.insert_user(%{username: "geo", password: "example", password_confirmation: "example", email_address: "test@example.com"})
+    ...> result = Auction.get_user_by_username_and_password("geo", "example")
+    ...> match?(%Auction.User{username: "geo"}, result)
+    true
+    iex> Auction.get_user_by_username_and_password("no_user", "bad_password")
+    false
+  """
   def get_user_by_username_and_password(username, password) do
     with user when not is_nil(user) <- @repo.get_by(User, %{username: username}),
          true <- Password.verify_with_hash(password, user.hashed_password) do

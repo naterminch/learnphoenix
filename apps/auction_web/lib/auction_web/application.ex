@@ -9,7 +9,8 @@ defmodule AuctionWeb.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      AuctionWeb.Endpoint,
+      {Phoenix.PubSub, name: AuctionWeb.PubSub},
+      AuctionWeb.Endpoint
       # Starts a worker by calling: AuctionWeb.Worker.start_link(arg)
       # {AuctionWeb.Worker, arg},
     ]

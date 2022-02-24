@@ -13,7 +13,8 @@ config :auction_web, AuctionWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "BOXCxqrqQfa7YvmeIHA2Ojl430zkjfOogywxCF9k8HaknMngwrIMGUItbB21r0YP",
   render_errors: [view: AuctionWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: AuctionWeb.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: AuctionWeb.PubSub
+  # pubsub: [name: AuctionWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

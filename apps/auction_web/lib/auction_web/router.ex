@@ -16,8 +16,7 @@ defmodule AuctionWeb.Router do
 
   scope "/", AuctionWeb do
     pipe_through :browser
-
-    get "/", PageController, :index
+    get "/", ItemController, :index
 
     get "/login", SessionController, :new
     post "/login", SessionController, :create

@@ -18,4 +18,4 @@ config :phoenix, :json_library, Jason
 #       format: "$date $time [$level] $metadata$message\n",
 #       metadata: [:user_id]
 
-
+config :logger, level: :warn

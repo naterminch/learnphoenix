@@ -4,12 +4,9 @@ defmodule AuctionTest do
   alias Auction.{Item, Repo}
   doctest Auction
 
-  setup do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Repo)
-  end
-
   describe "list_items/0" do
     setup do
+      Repo.delete_all(Item)
       {:ok, item1} = Repo.insert(%Item{title: "Item 1"})
       {:ok, item2} = Repo.insert(%Item{title: "Item 2"})
       {:ok, item3} = Repo.insert(%Item{title: "Item 3"})
@@ -23,6 +20,7 @@ defmodule AuctionTest do
 
   describe "get_item/1" do
     setup do
+      Repo.delete_all(Item)
       {:ok, item1} = Repo.insert(%Item{title: "Item 1"})
       {:ok, item2} = Repo.insert(%Item{title: "Item 2"})
       %{items: [item1, item2]}
